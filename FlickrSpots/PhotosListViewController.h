@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotosListViewController : UITableViewController
-
+@property (nonatomic, weak) NSArray *photosList;
 @end

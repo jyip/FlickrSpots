@@ -1,5 +1,5 @@
 //
-//  FlickrSpotsTopPlacesViewController.m
+//  TopPlacesViewController.m
 //  FlickrSpots
 //
 //  Created by terran on 7/25/12.
@@ -8,6 +8,7 @@
 
 #import "TopPlacesViewController.h"
 #import "FlickrFetcher.h"
+#import "PhotosListViewController.h"
 
 @interface TopPlacesViewController ()
 @property (nonatomic, strong) NSArray *topFlickrPlaces;
@@ -17,11 +18,13 @@
 
 @synthesize topFlickrPlaces = _topFlickrPlaces;
 
+/*
 -(NSArray *)topFlickrPlaces
 {
     if (!_topFlickrPlaces) _topFlickrPlaces = [[NSArray alloc] init];
     return _topFlickrPlaces;
 }
+*/
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,7 +48,7 @@
     }];
     self.topFlickrPlaces = sortedArray;
     
-    //NSLog(@"%@", self.topFlickrPlaces);
+    NSLog(@"%@", self.topFlickrPlaces);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -88,8 +91,19 @@
     NSString *placeInfo = [[self.topFlickrPlaces objectAtIndex:indexPath.row] valueForKey:@"_content"];
     cell.textLabel.text = [placeInfo substringToIndex:[placeInfo rangeOfString:@", "].location];
     cell.detailTextLabel.text = [placeInfo substringFromIndex:[placeInfo rangeOfString:@", "].location+2];
-    
+
     return cell;
+}
+
+#pragma mark - Prepare for segue
+#define PHOTOS_LIST_MAX 50
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Show Photos List"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        NSDictionary *place = [self.topFlickrPlaces objectAtIndex:indexPath.row];
+        [segue.destinationViewController setPhotosList:[FlickrFetcher photosInPlace:place maxResults:PHOTOS_LIST_MAX]];
+    }
 }
 
 /*
