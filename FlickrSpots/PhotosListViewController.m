@@ -71,8 +71,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSString *title = [[self.photosList objectAtIndex:indexPath.row] valueForKey:@"title"];
-    NSArray *descArray = [[self.photosList objectAtIndex:indexPath.row] valueForKey:@"description"];
-    NSString *desc = [descArray valueForKey:@"_content"];
+    NSString *desc = [[self.photosList objectAtIndex:indexPath.row] valueForKeyPath:@"description._content"];
         
     if([title length] == 0 && [desc length] == 0) {
         cell.textLabel.text = @"Unknown";
