@@ -15,6 +15,7 @@
 @implementation PhotosListViewController
 
 @synthesize photosList = _photosList;
+@synthesize navigationTitle = _navigationTitle;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,8 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@",self.photosList);
-
+    self.navigationItem.title = self.navigationTitle;
+    //NSLog(@"%@",self.photosList);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -60,7 +62,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 50;
+    return [self.photosList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,7 +70,20 @@
     static NSString *CellIdentifier = @"Photo Description";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    NSString *title = [[self.photosList objectAtIndex:indexPath.row] valueForKey:@"title"];
+    NSArray *descArray = [[self.photosList objectAtIndex:indexPath.row] valueForKey:@"description"];
+    NSString *desc = [descArray valueForKey:@"_content"];
+        
+    if([title length] == 0 && [desc length] == 0) {
+        cell.textLabel.text = @"Unknown";
+    }
+    else if([title length] == 0) {
+        cell.textLabel.text = desc;
+    } 
+    else {
+        cell.textLabel.text = title;
+        cell.detailTextLabel.text = desc;
+    }
     
     return cell;
 }
@@ -115,7 +130,7 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

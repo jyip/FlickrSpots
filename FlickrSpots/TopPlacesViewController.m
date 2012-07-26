@@ -18,14 +18,6 @@
 
 @synthesize topFlickrPlaces = _topFlickrPlaces;
 
-/*
--(NSArray *)topFlickrPlaces
-{
-    if (!_topFlickrPlaces) _topFlickrPlaces = [[NSArray alloc] init];
-    return _topFlickrPlaces;
-}
-*/
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -48,7 +40,7 @@
     }];
     self.topFlickrPlaces = sortedArray;
     
-    NSLog(@"%@", self.topFlickrPlaces);
+    //NSLog(@"%@", self.topFlickrPlaces);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -100,9 +92,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Photos List"]) {
+        // get photos list from flickr
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *place = [self.topFlickrPlaces objectAtIndex:indexPath.row];
         [segue.destinationViewController setPhotosList:[FlickrFetcher photosInPlace:place maxResults:PHOTOS_LIST_MAX]];
+        
+        // set title
+        NSString *placeInfo = [place valueForKey:@"_content"];
+        [segue.destinationViewController setNavigationTitle:[placeInfo substringToIndex:[placeInfo rangeOfString:@", "].location]];
     }
 }
 

@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Top Places View Controller-->
+        <!--Top Places View Controller - Top Places-->
         <scene sceneID="Hlx-Uv-SA9">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djX-EC-jTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="HqE-Y7-rlV" id="Pzu-Wz-x3g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="62f-Dh-tPN"/>
+                    <navigationItem key="navigationItem" title="Top Places" id="62f-Dh-tPN"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1179" y="-86"/>
@@ -186,17 +186,6 @@
             <point key="canvasLocation" x="653" y="-86"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="PhotosListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosListViewController.h"/>
-        </class>
-        <class className="RecentlyViewedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentlyViewedViewController.h"/>
-        </class>
-        <class className="TopPlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopPlacesViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
