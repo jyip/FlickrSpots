@@ -21,6 +21,7 @@
 @synthesize imageView;
 @synthesize photo;
 @synthesize photoTitle;
+@synthesize setAsRecent;
 
 - (void)viewDidLoad
 {
@@ -31,13 +32,15 @@
     [imageView setImage:[UIImage imageWithData:imageData]];
     
     // set a recently viewed photo
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *recentPhotos = [[defaults valueForKey:RECENTLY_VIEWED_KEY] mutableCopy];
-    if (!recentPhotos) recentPhotos = [NSMutableArray array];
-    if(![recentPhotos containsObject:self.photo]) [recentPhotos insertObject:self.photo atIndex:0];
-    if([recentPhotos count] > RECENT_MAX) [recentPhotos removeLastObject];
-    [defaults setObject:recentPhotos forKey:RECENTLY_VIEWED_KEY];
-    [defaults synchronize];
+    if (self.setAsRecent) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *recentPhotos = [[defaults valueForKey:RECENTLY_VIEWED_KEY] mutableCopy];
+        if (!recentPhotos) recentPhotos = [NSMutableArray array];
+        if(![recentPhotos containsObject:self.photo]) [recentPhotos insertObject:self.photo atIndex:0];
+        if([recentPhotos count] > RECENT_MAX) [recentPhotos removeLastObject];
+        [defaults setObject:recentPhotos forKey:RECENTLY_VIEWED_KEY];
+        [defaults synchronize];
+    }
     
     // set title
     self.navigationItem.title = self.photoTitle;

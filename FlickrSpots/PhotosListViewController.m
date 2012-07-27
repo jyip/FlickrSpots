@@ -79,6 +79,7 @@
         NSDictionary *photo = [self.photosList objectAtIndex:indexPath.row];
         [segue.destinationViewController setPhoto:photo];
         [segue.destinationViewController setPhotoTitle:[sender text]];
+        [segue.destinationViewController setSetAsRecent:YES];
     }
 }
 

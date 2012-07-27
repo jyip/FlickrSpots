@@ -11,4 +11,5 @@
 @interface SelectedPhotoViewController : UIViewController
 @property (nonatomic,strong) NSDictionary *photo;
 @property (nonatomic,weak) NSString *photoTitle;
+@property (nonatomic, assign) BOOL setAsRecent;
 @end
