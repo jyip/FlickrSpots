@@ -88,18 +88,14 @@
 }
 
 #pragma mark - Prepare for segue
-#define PHOTOS_LIST_MAX 50
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Photos List"]) {
         // get photos list from flickr
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *place = [self.topFlickrPlaces objectAtIndex:indexPath.row];
-        [segue.destinationViewController setPhotosList:[FlickrFetcher photosInPlace:place maxResults:PHOTOS_LIST_MAX]];
-        
-        // set title
-        NSString *placeInfo = [place valueForKey:@"_content"];
-        [segue.destinationViewController setNavigationTitle:[placeInfo substringToIndex:[placeInfo rangeOfString:@", "].location]];
+        [segue.destinationViewController setPlace:place];
     }
 }
 

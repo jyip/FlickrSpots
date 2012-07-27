@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		453F843415C1FF5D006F9CAA /* SelectedPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */; };
 		45A573AB15C07AC000F33CF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A573AA15C07AC000F33CF5 /* UIKit.framework */; };
 		45A573AD15C07AC000F33CF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A573AC15C07AC000F33CF5 /* Foundation.framework */; };
 		45A573AF15C07AC000F33CF5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A573AE15C07AC000F33CF5 /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		453F843215C1FF5D006F9CAA /* SelectedPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedPhotoViewController.h; sourceTree = "<group>"; };
+		453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedPhotoViewController.m; sourceTree = "<group>"; };
 		45A573A615C07AC000F33CF5 /* FlickrSpots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrSpots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A573AA15C07AC000F33CF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		45A573AC15C07AC000F33CF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,8 @@
 				45A573BF15C07AC000F33CF5 /* MainStoryboard_iPad.storyboard */,
 				45A573BC15C07AC000F33CF5 /* MainStoryboard_iPhone.storyboard */,
 				45A573B115C07AC000F33CF5 /* Supporting Files */,
+				453F843215C1FF5D006F9CAA /* SelectedPhotoViewController.h */,
+				453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */,
 			);
 			path = FlickrSpots;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				ADD5D62E15C0E2DE001653D9 /* PhotosListViewController.m in Sources */,
 				ADD5D63115C0E36A001653D9 /* RecentlyViewedViewController.m in Sources */,
 				ADD5D63415C0E41E001653D9 /* TopPlacesViewController.m in Sources */,
+				453F843415C1FF5D006F9CAA /* SelectedPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

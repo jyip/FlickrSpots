@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotosListViewController : UITableViewController
+@property (nonatomic, strong) NSDictionary *place;
 @property (nonatomic, strong) NSArray *photosList;
-@property (nonatomic, weak) NSString *navigationTitle;
 @end

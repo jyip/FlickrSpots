@@ -65,11 +65,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo Description" textLabel="Gto-xT-1XD" detailTextLabel="hnS-wF-RMh" style="IBUITableViewCellStyleSubtitle" id="9dC-ys-k8h">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo Description" textLabel="Gto-xT-1XD" detailTextLabel="hnS-wF-RMh" style="IBUITableViewCellStyleSubtitle" id="9dC-ys-k8h">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Photo Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gto-xT-1XD">
@@ -89,6 +89,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="sSW-o9-qCS" kind="push" identifier="Show Photo" id="bsE-yd-o5l"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -100,6 +103,37 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1620" y="-86"/>
+        </scene>
+        <!--Selected Photo View Controller-->
+        <scene sceneID="uS1-6p-cqX">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JU9-Gb-AQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="sSW-o9-qCS" customClass="SelectedPhotoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1f8-j9-RrM">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Ufs-B4-7X1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="5Y9-xg-2Op">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1vL-aP-kpB"/>
+                    <connections>
+                        <outlet property="imageView" destination="5Y9-xg-2Op" id="jdz-M0-8nr"/>
+                        <outlet property="scrollView" destination="Ufs-B4-7X1" id="Qsp-Ub-fHz"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2067" y="-86"/>
         </scene>
         <!--Recently Viewed View Controller - Recently Viewed-->
         <scene sceneID="mc0-oJ-MHF">
