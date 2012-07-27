@@ -105,11 +105,13 @@
 				45A573B915C07AC000F33CF5 /* FlickrSpotsAppDelegate.h */,
 				ADD5D62C15C0E2DE001653D9 /* PhotosListViewController.h */,
 				ADD5D62F15C0E36A001653D9 /* RecentlyViewedViewController.h */,
+				453F843215C1FF5D006F9CAA /* SelectedPhotoViewController.h */,
 				ADD5D63215C0E41E001653D9 /* TopPlacesViewController.h */,
 				45A573DD15C0986600F33CF5 /* FlickrFetcher.m */,
 				45A573BA15C07AC000F33CF5 /* FlickrSpotsAppDelegate.m */,
 				ADD5D62D15C0E2DE001653D9 /* PhotosListViewController.m */,
 				ADD5D63015C0E36A001653D9 /* RecentlyViewedViewController.m */,
+				453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */,
 				ADD5D63315C0E41E001653D9 /* TopPlacesViewController.m */,
 				45A573C515C07AC000F33CF5 /* first.png */,
 				45A573C715C07AC000F33CF5 /* first@2x.png */,
@@ -118,8 +120,6 @@
 				45A573BF15C07AC000F33CF5 /* MainStoryboard_iPad.storyboard */,
 				45A573BC15C07AC000F33CF5 /* MainStoryboard_iPhone.storyboard */,
 				45A573B115C07AC000F33CF5 /* Supporting Files */,
-				453F843215C1FF5D006F9CAA /* SelectedPhotoViewController.h */,
-				453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */,
 			);
 			path = FlickrSpots;
 			sourceTree = "<group>";

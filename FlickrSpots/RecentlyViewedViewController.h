@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define RECENTLY_VIEWED_KEY @"RecentlyViewed"
+#define RECENT_MAX 20
+
 @interface RecentlyViewedViewController : UITableViewController
 
 @end
