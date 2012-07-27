@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrSpotsTableViewController.h"
 
-@interface PhotosListViewController : UITableViewController
+@interface PhotosListViewController : FlickrSpotsTableViewController
 @property (nonatomic, strong) NSDictionary *place;
 @property (nonatomic, strong) NSArray *photosList;
 @end

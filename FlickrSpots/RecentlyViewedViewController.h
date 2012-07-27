@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrSpotsTableViewController.h"
 
 #define RECENTLY_VIEWED_KEY @"RecentlyViewed"
 #define RECENT_MAX 20
 
-@interface RecentlyViewedViewController : UITableViewController
+@interface RecentlyViewedViewController : FlickrSpotsTableViewController
 
 @end
