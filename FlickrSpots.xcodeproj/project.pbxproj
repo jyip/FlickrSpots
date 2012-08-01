@@ -16,10 +16,6 @@
 		45A573BB15C07AC000F33CF5 /* FlickrSpotsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A573BA15C07AC000F33CF5 /* FlickrSpotsAppDelegate.m */; };
 		45A573BE15C07AC000F33CF5 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A573BC15C07AC000F33CF5 /* MainStoryboard_iPhone.storyboard */; };
 		45A573C115C07AC000F33CF5 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A573BF15C07AC000F33CF5 /* MainStoryboard_iPad.storyboard */; };
-		45A573C615C07AC000F33CF5 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A573C515C07AC000F33CF5 /* first.png */; };
-		45A573C815C07AC000F33CF5 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A573C715C07AC000F33CF5 /* first@2x.png */; };
-		45A573CD15C07AC000F33CF5 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A573CC15C07AC000F33CF5 /* second.png */; };
-		45A573CF15C07AC000F33CF5 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A573CE15C07AC000F33CF5 /* second@2x.png */; };
 		45A573DE15C0986600F33CF5 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A573DD15C0986600F33CF5 /* FlickrFetcher.m */; };
 		ADA5A2B515C2720700ED0C37 /* FlickrSpotsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA5A2B415C2720700ED0C37 /* FlickrSpotsTableViewController.m */; };
 		ADD5D62E15C0E2DE001653D9 /* PhotosListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD5D62D15C0E2DE001653D9 /* PhotosListViewController.m */; };
@@ -42,10 +38,6 @@
 		45A573BA15C07AC000F33CF5 /* FlickrSpotsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrSpotsAppDelegate.m; sourceTree = "<group>"; };
 		45A573BD15C07AC000F33CF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		45A573C015C07AC000F33CF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		45A573C515C07AC000F33CF5 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		45A573C715C07AC000F33CF5 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		45A573CC15C07AC000F33CF5 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		45A573CE15C07AC000F33CF5 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		45A573DB15C0986600F33CF5 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		45A573DC15C0986600F33CF5 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		45A573DD15C0986600F33CF5 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -103,27 +95,18 @@
 		45A573B015C07AC000F33CF5 /* FlickrSpots */ = {
 			isa = PBXGroup;
 			children = (
-				45A573DB15C0986600F33CF5 /* FlickrAPIKey.h */,
-				45A573DC15C0986600F33CF5 /* FlickrFetcher.h */,
-				45A573B915C07AC000F33CF5 /* FlickrSpotsAppDelegate.h */,
 				ADA5A2B315C2720700ED0C37 /* FlickrSpotsTableViewController.h */,
-				ADD5D62C15C0E2DE001653D9 /* PhotosListViewController.h */,
-				ADD5D62F15C0E36A001653D9 /* RecentlyViewedViewController.h */,
-				453F843215C1FF5D006F9CAA /* SelectedPhotoViewController.h */,
-				ADD5D63215C0E41E001653D9 /* TopPlacesViewController.h */,
-				45A573DD15C0986600F33CF5 /* FlickrFetcher.m */,
-				45A573BA15C07AC000F33CF5 /* FlickrSpotsAppDelegate.m */,
 				ADA5A2B415C2720700ED0C37 /* FlickrSpotsTableViewController.m */,
-				ADD5D62D15C0E2DE001653D9 /* PhotosListViewController.m */,
-				ADD5D63015C0E36A001653D9 /* RecentlyViewedViewController.m */,
-				453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */,
-				ADD5D63315C0E41E001653D9 /* TopPlacesViewController.m */,
-				45A573C515C07AC000F33CF5 /* first.png */,
-				45A573C715C07AC000F33CF5 /* first@2x.png */,
-				45A573CC15C07AC000F33CF5 /* second.png */,
-				45A573CE15C07AC000F33CF5 /* second@2x.png */,
 				45A573BF15C07AC000F33CF5 /* MainStoryboard_iPad.storyboard */,
 				45A573BC15C07AC000F33CF5 /* MainStoryboard_iPhone.storyboard */,
+				ADD5D62C15C0E2DE001653D9 /* PhotosListViewController.h */,
+				ADD5D62D15C0E2DE001653D9 /* PhotosListViewController.m */,
+				ADD5D62F15C0E36A001653D9 /* RecentlyViewedViewController.h */,
+				ADD5D63015C0E36A001653D9 /* RecentlyViewedViewController.m */,
+				ADD5D63215C0E41E001653D9 /* TopPlacesViewController.h */,
+				ADD5D63315C0E41E001653D9 /* TopPlacesViewController.m */,
+				453F843215C1FF5D006F9CAA /* SelectedPhotoViewController.h */,
+				453F843315C1FF5D006F9CAA /* SelectedPhotoViewController.m */,
 				45A573B115C07AC000F33CF5 /* Supporting Files */,
 			);
 			path = FlickrSpots;
@@ -132,6 +115,11 @@
 		45A573B115C07AC000F33CF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				45A573DB15C0986600F33CF5 /* FlickrAPIKey.h */,
+				45A573DC15C0986600F33CF5 /* FlickrFetcher.h */,
+				45A573DD15C0986600F33CF5 /* FlickrFetcher.m */,
+				45A573B915C07AC000F33CF5 /* FlickrSpotsAppDelegate.h */,
+				45A573BA15C07AC000F33CF5 /* FlickrSpotsAppDelegate.m */,
 				45A573B215C07AC000F33CF5 /* FlickrSpots-Info.plist */,
 				45A573B315C07AC000F33CF5 /* InfoPlist.strings */,
 				45A573B615C07AC000F33CF5 /* main.m */,
@@ -194,10 +182,6 @@
 				45A573B515C07AC000F33CF5 /* InfoPlist.strings in Resources */,
 				45A573BE15C07AC000F33CF5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				45A573C115C07AC000F33CF5 /* MainStoryboard_iPad.storyboard in Resources */,
-				45A573C615C07AC000F33CF5 /* first.png in Resources */,
-				45A573C815C07AC000F33CF5 /* first@2x.png in Resources */,
-				45A573CD15C07AC000F33CF5 /* second.png in Resources */,
-				45A573CF15C07AC000F33CF5 /* second@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

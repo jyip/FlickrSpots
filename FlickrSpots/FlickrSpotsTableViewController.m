@@ -14,6 +14,16 @@
 
 @implementation FlickrSpotsTableViewController
 
+@synthesize flickrData = _flickrData;
+
+- (void)setFlickrData:(NSArray *)flickrData
+{
+    if(_flickrData != flickrData) {
+        _flickrData = flickrData;
+        [self.tableView reloadData];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

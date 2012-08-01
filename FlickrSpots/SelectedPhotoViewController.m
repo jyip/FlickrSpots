@@ -59,11 +59,6 @@
 {
     // Return YES for supported orientations
     return YES;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
 }
 
 - (void)viewDidUnload

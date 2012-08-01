@@ -8,6 +8,7 @@
 
 #import "RecentlyViewedViewController.h"
 #import "SelectedPhotoViewController.h"
+#import "FlickrFetcher.h"
 
 @interface RecentlyViewedViewController ()
 @property (nonatomic,strong) NSArray *recentPhotos;
@@ -25,6 +26,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // update the list whenever this view is about to reappear
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.recentPhotos = [defaults valueForKey:RECENTLY_VIEWED_KEY];
 }
@@ -53,8 +55,8 @@
     static NSString *CellIdentifier = @"Recent Photo Description";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString *title = [[self.recentPhotos objectAtIndex:indexPath.row] valueForKey:@"title"];
-    NSString *desc = [[self.recentPhotos objectAtIndex:indexPath.row] valueForKeyPath:@"description._content"];
+    NSString *title = [[self.recentPhotos objectAtIndex:indexPath.row] valueForKey:FLICKR_PHOTO_TITLE];
+    NSString *desc = [[self.recentPhotos objectAtIndex:indexPath.row] valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
     
     if([title length] == 0 && [desc length] == 0) {
         cell.textLabel.text = @"Unknown";

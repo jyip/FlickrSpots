@@ -17,22 +17,32 @@
 @implementation PhotosListViewController
 
 @synthesize place = _place;
-@synthesize photosList = _photosList;
 
-#define PHOTOS_LIST_MAX 50
-- (void)viewDidLoad
+- (void)setPlace:(NSDictionary *)place
 {
-    [super viewDidLoad];
-    NSString *placeInfo = [self.place valueForKey:@"_content"];
-    self.navigationItem.title = [placeInfo substringToIndex:[placeInfo rangeOfString:@", "].location];
-    self.photosList = [FlickrFetcher photosInPlace:self.place maxResults:PHOTOS_LIST_MAX];
-    
-    //NSLog(@"%@",self.photosList);
+    if(_place != place) {
+        _place = place;
+        [self updatePhotosInPlace];
+    }
 }
 
-- (void)viewDidUnload
+#define PHOTOS_LIST_MAX 50
+- (void)updatePhotosInPlace
 {
-    [super viewDidUnload];
+    NSString *placeInfo = [self.place valueForKey:FLICKR_PLACE_NAME];
+    self.navigationItem.title = [placeInfo substringToIndex:[placeInfo rangeOfString:@", "].location];
+    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickr downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        // get photosList with fetcher in separate queue thread
+        NSArray *photosList = [FlickrFetcher photosInPlace:self.place maxResults:PHOTOS_LIST_MAX];
+        // go back to main queue to set flickrData which has UIKit elements 
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.flickrData = photosList;
+        });
+    });
+    dispatch_release(downloadQueue);
+    //NSLog(@"%@", self.flickrData);
 }
 
 #pragma mark - Table view data source
@@ -46,7 +56,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.photosList count];
+    return [self.flickrData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,8 +64,8 @@
     static NSString *CellIdentifier = @"Photo Description";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString *title = [[self.photosList objectAtIndex:indexPath.row] valueForKey:@"title"];
-    NSString *desc = [[self.photosList objectAtIndex:indexPath.row] valueForKeyPath:@"description._content"];
+    NSString *title = [[self.flickrData objectAtIndex:indexPath.row] valueForKey:FLICKR_PHOTO_TITLE];
+    NSString *desc = [[self.flickrData objectAtIndex:indexPath.row] valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
         
     if([title length] == 0 && [desc length] == 0) {
         cell.textLabel.text = @"Unknown";
@@ -76,7 +86,7 @@
 {
     if ([segue.identifier isEqualToString:@"Show Photo"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        NSDictionary *photo = [self.photosList objectAtIndex:indexPath.row];
+        NSDictionary *photo = [self.flickrData objectAtIndex:indexPath.row];
         [segue.destinationViewController setPhoto:photo];
         [segue.destinationViewController setPhotoTitle:[sender text]];
         [segue.destinationViewController setSetAsRecent:YES];

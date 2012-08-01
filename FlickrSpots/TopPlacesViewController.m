@@ -11,40 +11,33 @@
 #import "PhotosListViewController.h"
 
 @interface TopPlacesViewController ()
-@property (nonatomic, strong) NSArray *topFlickrPlaces;
+
 @end
 
 @implementation TopPlacesViewController
 
-@synthesize topFlickrPlaces = _topFlickrPlaces;
+- (void)updateTopPlaces
+{
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickr downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        // use flickr fetcher and sort
+        NSArray *topPlaces = [[FlickrFetcher topPlaces] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSString *first = [(NSArray*)a valueForKey:FLICKR_PLACE_NAME];
+            NSString *second = [(NSArray*)b valueForKey:FLICKR_PLACE_NAME];
+            return [first compare:second];
+        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.flickrData = topPlaces;
+        });
+    });
+    dispatch_release(downloadQueue);
+    //NSLog(@"%@", self.flickrData);
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // sort to alpha by first letter of _content
-    NSArray *sortedArray;
-    sortedArray = [[FlickrFetcher topPlaces] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSString *first = [(NSArray*)a valueForKey:@"_content"];
-        NSString *second = [(NSArray*)b valueForKey:@"_content"];
-        return [first compare:second];
-    }];
-    self.topFlickrPlaces = sortedArray;
-    
-    //NSLog(@"%@", self.topFlickrPlaces);
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [self updateTopPlaces];
 }
 
 #pragma mark - Table view data source
@@ -58,7 +51,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.topFlickrPlaces count];
+    return [self.flickrData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +59,7 @@
     static NSString *CellIdentifier = @"Location Description";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString *placeInfo = [[self.topFlickrPlaces objectAtIndex:indexPath.row] valueForKey:@"_content"];
+    NSString *placeInfo = [[self.flickrData objectAtIndex:indexPath.row] valueForKey:FLICKR_PLACE_NAME];
     cell.textLabel.text = [placeInfo substringToIndex:[placeInfo rangeOfString:@", "].location];
     cell.detailTextLabel.text = [placeInfo substringFromIndex:[placeInfo rangeOfString:@", "].location+2];
 
@@ -80,7 +73,7 @@
     if ([segue.identifier isEqualToString:@"Show Photos List"]) {
         // get photos list from flickr
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        NSDictionary *place = [self.topFlickrPlaces objectAtIndex:indexPath.row];
+        NSDictionary *place = [self.flickrData objectAtIndex:indexPath.row];
         [segue.destinationViewController setPlace:place];
     }
 }

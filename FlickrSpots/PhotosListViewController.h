@@ -11,5 +11,4 @@
 
 @interface PhotosListViewController : FlickrSpotsTableViewController
 @property (nonatomic, strong) NSDictionary *place;
-@property (nonatomic, strong) NSArray *photosList;
 @end

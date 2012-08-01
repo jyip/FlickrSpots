@@ -10,5 +10,5 @@
 
 // Use this as the parent Table View Controller to override common functions
 @interface FlickrSpotsTableViewController : UITableViewController
-
+@property (nonatomic,strong) NSArray *flickrData;
 @end
